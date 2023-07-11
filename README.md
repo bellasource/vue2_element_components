@@ -1,24 +1,6 @@
-# vue2sass
+# vue2_element_components
 
-## Project setup
-```
-npm install
-```
+基于vue2、element封装的常用组件与页面
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 表单与表格嵌套使用校验
+  例子： src/views/AboutView

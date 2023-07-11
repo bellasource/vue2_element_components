@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div  style="width: 600px; text-align:right">
     <div class="btn-wrap">
-      <el-button type="primary" @click="handleAdd">Add</el-button>
-      <el-button @click="handleValidate">Valid</el-button>
+      <el-button type="primary" @click="handleAdd">新增</el-button>
+      <el-button @click="handleValidate">校验表单</el-button>
+      <el-button @click="handleReset">清除校验</el-button>
     </div>
-    <el-form style="width: 600px" ref="formRef" :model="form" size="mini">
-      <el-table :data="form.tableData" border size="mini" valign="top">
+    <el-form ref="formRef" :model="form" size="mini">
+      <el-table :data="form.tableData" border size="mini">
         <el-table-column prop="id" label="Id"></el-table-column>
-        <el-table-column prop="name" label="Name"></el-table-column>
-        <el-table-column label="计划收入" style="padding: 0">
+        <el-table-column label="计划收入">
           <template #default="scope">
             <el-form-item
               :prop="'tableData.' + scope.$index + '.income'"
@@ -18,11 +18,7 @@
             </el-form-item>
           </template>
         </el-table-column>
-        <el-table-column
-          label="计划支出"
-          style="padding: 0"
-          class="jihuazhichu"
-        >
+        <el-table-column label="计划支出">
           <template #default="scope">
             <el-form-item
               :prop="'tableData.' + scope.$index + '.expenditure'"
@@ -39,6 +35,9 @@
         </el-table-column>
       </el-table>
     </el-form>
+    <div style="margin-top:20px">
+      <el-button type="primary" @click="handleSubmit">提交</el-button>
+    </div>
   </div>
 </template>
 
@@ -97,15 +96,20 @@
         this.form.tableData.splice(index, 1)
       },
       handleValidate() {
-        console.log('handleValidate')
+        this.$refs['formRef'].validate()
+      },
+      handleReset() {
+        this.$refs['formRef'].clearValidate()
+      },
+      handleSubmit() {
         this.$refs['formRef'].validate((valid) => {
           if (valid) {
-            console.log('校验通过')
+            console.log('校验通过', this.form.tableData)
           } else {
             console.log('校验不通过')
           }
         })
-      },
+      }
     },
   }
 </script>
@@ -113,15 +117,15 @@
 <style lang="scss" scoped>
   .btn-wrap {
     text-align: right;
-    // margin-bottom: 20px;
+    margin-bottom: 20px;
   }
   :deep(.el-form-item) {
-    margin-bottom: 0 !important;
+    margin-bottom: 0px !important;
+    .el-form-item__error {
+      position: static;
+    }
   }
-  :deep(.el-form-item__error) {
-    position: static;
+  :deep(.el-table__cell) {
+    vertical-align: top;
   }
-  // :deep(.el-table__cell) {
-  //   padding: 0!important;
-  // }
 </style>
