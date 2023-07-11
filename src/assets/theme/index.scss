@@ -1,0 +1,37 @@
+@import "./app.scss";
+@import "./offcial.scss";
+
+$themes: (
+  offcial: $theme-offcial,
+  app: $theme-app,
+);
+
+$theme-map: null;
+
+// 第三步: 定义混合指令, 切换主题,并将主题中的所有规则添加到theme-map中
+@mixin themify() {
+  @each $theme-name, $map in $themes {
+    // & 表示父级元素  !global 表示覆盖原来的
+    [data-theme="#{$theme-name}"] & {
+      // 1. 清空原来的map集合
+      $theme-map: () !global;
+      // 2. 循环合并键值对
+      @each $key, $value in $map {
+        // map-merge函数用于map和新加的键值融合
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      // 表示调用themify {}中的内容
+      @content;
+    }
+  }
+}
+
+@function themed($key) {
+  // map-get函数用于查找键值，
+  @return map-get($theme-map, $key);
+}
