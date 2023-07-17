@@ -127,5 +127,6 @@
   }
   :deep(.el-table__cell) {
     vertical-align: top;
+    padding: 4px 0;
   }
 </style>

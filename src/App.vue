@@ -2,14 +2,16 @@
  * @Author: luobei luobei@seewintech.com
  * @Date: 2023-07-10 14:15:10
  * @LastEditors: luobei luobei@seewintech.com
- * @LastEditTime: 2023-07-11 09:57:22
+ * @LastEditTime: 2023-07-17 12:01:18
  * @FilePath: \vue2sass\src\App.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div id="app">
+    <!-- 切换主题 + svg-icon -->
     <router-link to="/">切换主题</router-link> |
-    <router-link to="/about">表单嵌套表格校验</router-link>
+    <router-link to="/about">表单嵌套表格</router-link> |
+    <router-link to="/previewTxt">预览txt</router-link>
     <hr />
     <router-view />
   </div>
