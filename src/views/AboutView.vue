@@ -38,13 +38,21 @@
     <div style="margin-top:20px">
       <el-button type="primary" @click="handleSubmit">提交</el-button>
     </div>
+    <count-down :endTime="endTime" :endText="endText " />
   </div>
 </template>
 
 <script>
+import countDown from '@/components/CountDown'
   export default {
+    components: {
+      countDown
+    },
     data() {
       return {
+        endTime:new Date("2022/04/18 08:00:20").getTime() / 1000 +  ' ',
+        //  console.log(endTime)=>得到毫秒  1658030420 可在方法里面放入后台数据,new Date('放后台数据').getTime() / 1000 +  ' ',但要记得调用方法
+        endText:'',
         form: {
           tableData: [],
         },
