@@ -8,12 +8,21 @@
 -->
 <template>
   <div>
-    <div style="font-size:16px;">
-      <svg-icon icon-class="example" /><span @click="setTheme('offcial')">绿色主题</span>
-      |
-      <svg-icon icon-class="example" /><span @click="setTheme('app')">灰色主题</span>
+    <div class="section-wrap">
+      <div class="label">单行文本换行</div>
+      <div style="width:80px">
+        <TextOverTooltip ref-name="testName1" class-name="fs20" content="测试品牌、测试品牌、测试品牌、测试品牌、测试品牌、测试品牌" />
+      </div>
     </div>
-    <div class="content">正文内容</div>
+    <div class="section-wrap">
+      <div class="label">
+        <svg-icon icon-class="example" /><span @click="setTheme('offcial')">绿色主题</span>
+        |
+        <svg-icon icon-class="example" /><span @click="setTheme('app')">灰色主题</span>
+      </div>
+      <div class="content">正文内容</div>
+    </div>
+
   </div>
 </template>
 
@@ -24,13 +33,14 @@
  * 2. app.vue中引入index.scss文件
  * 3. 切换主题： window.document.documentElement.setAttribute('data-theme', value)
  */
+import TextOverTooltip from '@/components/TextOverTooltip'
 export default {
+  components: { TextOverTooltip },
   mounted() {
     this.setTheme('offcial')
   },
   methods: {
     setTheme(value) {
-      console.log(value, '切换主题')
       window.document.documentElement.setAttribute('data-theme', value)
     }
   }
@@ -41,6 +51,6 @@ export default {
     width: 200px;
     height: 200px;
     border: 1px solid #ccc;
-    margin: $menuHover;
+    // margin: $menuHover;
   }
 </style>

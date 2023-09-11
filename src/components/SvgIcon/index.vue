@@ -6,7 +6,11 @@
 </template>
 
 <script>
-// doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
+/**
+ * 优雅使用svg图片
+ * 1. 下载插件svg-sprite-loader，配置svg使用该loader
+ * 2. svg文件名即为svg的class类名
+ */
 import { isExternal } from '@/utils/validate'
 
 export default {

@@ -66,7 +66,7 @@ export const constantRoutes = [
         path: 'changeThemeColor',
         name: 'changeThemeColor',
         component: () => import('@/views/changeThemeColor/index'),
-        meta: { title: '切换主题', icon: 'table' }
+        meta: { title: '切换主题 文本换行', icon: 'table' }
       }
     ]
   },

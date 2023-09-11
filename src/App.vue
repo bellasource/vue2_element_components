@@ -10,11 +10,11 @@ export default {
 }
 </script>
 <style lang="scss">
-  // @import './styles/theme/index.scss';
-  @import './styles/theme/index.scss';
-  .content {
-    @include themify {
-      color: themed('font-color');
-    }
+  .label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .section-wrap {
+    margin-bottom: 30px;
   }
 </style>
