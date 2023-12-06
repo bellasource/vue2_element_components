@@ -80,6 +80,16 @@ module.exports = {
       })
       .end()
 
+    const oneOfsMap = config.module.rule('scss').oneOfs.store
+    oneOfsMap.forEach(item => {
+      item
+        .use('sass-resources-loader')
+        .loader('sass-resources-loader')
+        .options({
+          resources: ['./src/styles/theme/index.scss']
+        })
+        .end()
+    })
     config
       .when(process.env.NODE_ENV !== 'development',
         config => {
@@ -119,11 +129,14 @@ module.exports = {
           config.optimization.runtimeChunk('single')
         }
       )
-  },
-  pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'sass',
-      patterns: [path.resolve(__dirname, './src/styles/theme/index.scss')] // 引入全局样式变量
-    }
   }
+  // pluginOptions: {
+  //   'style-resources-loader': {
+  //     preProcessor: 'sass',
+  //     patterns: [
+  //       path.resolve('./dsrer'),
+  //       path.resolve(__dirname, './src/styles/variables.scss')
+  //     ] // 引入全局样式变量
+  //   }
+  // }
 }

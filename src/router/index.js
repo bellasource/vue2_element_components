@@ -72,14 +72,15 @@ export const constantRoutes = [
   },
 
   {
-    path: '/form',
+    path: '/dialog',
     component: Layout,
+    redirect: '/dialog/index',
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'CusDialog',
+        component: () => import('@/views/dialog/index'),
+        meta: { title: '全局弹框', icon: 'form' }
       }
     ]
   },
