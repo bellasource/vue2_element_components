@@ -1,21 +1,21 @@
 <template>
   <div v-if="isShow">
-    <div class="cusdlg-mask"></div>
+    <div class="cusdlg-mask" />
     <div class="cusdlg-model" :style="{ width: width }">
       <div class="cusdlg-body">
-        <div class="cusdlg-title" v-if="title">{{ title }}</div>
+        <div v-if="title" class="cusdlg-title">{{ title }}</div>
         <div class="cusdlg-content">{{ content }}</div>
         <div class="cusdlg-confirm">
-          <div @click="handleConfirm" class="confirm-btn">{{ okText }}</div>
+          <div class="confirm-btn" @click="handleConfirm">{{ okText }}</div>
         </div>
       </div>
       <div class="cusdlg-close">
         <img
-          @click="handleCancel"
           class="cusdlg-close-img"
           src="./close.png"
           alt="关闭弹框"
-        />
+          @click="handleCancel"
+        >
       </div>
     </div>
   </div>

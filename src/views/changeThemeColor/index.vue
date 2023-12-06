@@ -19,6 +19,21 @@
       </div>
     </div>
     <div class="section-wrap">
+      <div class="label">多行文本换行</div>
+      <div style="width: 80px">
+        <el-tooltip
+          v-model="mulData.showTooltip"
+          placement="top"
+          :open-delay="500"
+          effect="dark"
+          :disabled="!mulData.showTooltip"
+        >
+          <div slot="content" style="white-space: pre-wrap;" v-text="mulData.description" />
+          <div class="ellipse-two" @mouseenter="showTips($event,mulData)">{{ mulData.description }}</div>
+        </el-tooltip>
+      </div>
+    </div>
+    <div class="section-wrap">
       <div class="label">
         <svg-icon icon-class="example" /><span
           @click="setTheme('offcial')"
@@ -43,12 +58,35 @@
 import TextOverTooltip from '@/components/TextOverTooltip'
 export default {
   components: { TextOverTooltip },
+  data() {
+    return {
+      mulData: {
+        showTooltip: false,
+        description: '测试品牌测试品牌、测试品牌、测试品牌、测试品牌、测试品牌'
+      }
+    }
+  },
   mounted() {
     this.setTheme('offcial')
   },
   methods: {
     setTheme(value) {
       window.document.documentElement.setAttribute('data-theme', value)
+    },
+    // 固定盒子高度
+    showTips(obj, row) {
+      const parentNode = obj.target.parentNode
+      const TemporaryTag = document.createElement('span')
+      TemporaryTag.innerText = row.description
+      TemporaryTag.className = 'getTextWidth over-tooltip'
+      parentNode.appendChild(TemporaryTag)
+      // 内容高度
+      const curHeight = parentNode.querySelector('.getTextWidth').offsetHeight
+      parentNode.querySelector('.getTextWidth').remove()
+      // 盒子高度
+      const cellHeight = obj.target.offsetHeight
+      this.$set(row, 'showTooltip', curHeight > cellHeight)
+      console.log(row.showTooltip, '是否展示')
     }
   }
 }
@@ -61,5 +99,13 @@ export default {
   @include themify() {
     color: themed("font-color");
   }
+}
+.ellipse-two {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 </style>
