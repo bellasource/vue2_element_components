@@ -1,6 +1,8 @@
 import permission from './permission'
+import draggable from './draggable'
 const directives = {
-  permission
+  permission,
+  draggable
 }
 
 export default {

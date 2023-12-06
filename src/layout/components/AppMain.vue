@@ -1,6 +1,6 @@
 <template>
   <section class="app-main">
-    <el-card shadow="always">
+    <el-card style="height:100%">
       <router-view :key="key" />
     </el-card>
   </section>
@@ -20,7 +20,7 @@ export default {
 <style scoped>
 .app-main {
   /*50 = navbar  */
-  min-height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
   width: 100%;
   padding: 20px;
   position: relative;

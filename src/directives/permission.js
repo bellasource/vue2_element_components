@@ -15,6 +15,10 @@ const permission = {
   update() {
     console.log('update')
   },
+  // VNode更新后调用
+  componentUpdated() {
+    console.log('componentUpdated')
+  },
   // 指令所在dom被销毁时触发
   unbind() {
     console.log('unbind')
