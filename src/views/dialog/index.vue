@@ -13,15 +13,15 @@
       <div class="label">自定义指令 - 可拖拽悬浮按钮</div>
       <div v-draggable="handleDraggable" class="draggle-wrap">拖拽</div>
     </div>
-    <div class="section-wrap" style="position: relative;height:100px">
+    <div class="section-wrap">
       <div class="label">自定义指令 - 点击频繁</div>
       <div v-preventReClick="2000" @click="handleClick">点击频繁</div>
     </div>
-    <div class="section-wrap" style="position: relative;height:100px">
+    <div class="section-wrap">
       <div class="label">节流函数</div>
       <div @click="testThrottle">节流</div>
     </div>
-    <div class="section-wrap" style="position: relative;height:100px">
+    <div class="section-wrap">
       <div class="label">防抖函数</div>
       <el-input v-model="input" placeholder="请输入内容" @input="testDebounce" />
     </div>
