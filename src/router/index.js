@@ -80,7 +80,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'CusDialog',
         component: () => import('@/views/dialog/index'),
-        meta: { title: '全局弹框', icon: 'form' }
+        meta: { title: '全局弹框 自定义指令', icon: 'form' }
       }
     ]
   },

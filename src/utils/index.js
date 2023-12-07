@@ -45,7 +45,7 @@ export function parseTime(time, cFormat) {
   const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
     const value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
     return value.toString().padStart(2, '0')
   })
   return time_str
@@ -115,3 +115,57 @@ export function param2Obj(url) {
   })
   return obj
 }
+
+/**
+ * 节流函数(一段时间内只执行一次, 一段时间内多次触发无效)
+ * @return: {Function}
+ * @param: fn {Function}
+ * @param: wait {Number} 节流间隔时间
+ * @param: immediate {Boolean} 是否立即执行
+ */
+export function throttle(fn, wait = 1000, immediate = true) {
+  // 上一次被触发的时间
+  let previous = 0
+  let timer = null
+  return function(...rest) {
+    const context = this
+    if (immediate) {
+      const now = Date.now()
+      if (now - previous > wait) {
+        fn.apply(context, rest)
+        previous = now
+      }
+    } else {
+      if (!timer) {
+        timer = setTimeout(() => {
+          timer = null
+          fn.apply(context, rest)
+        }, wait)
+      }
+    }
+  }
+}
+/**
+ * 防抖函数（一段时间内多次触发，丢弃之前的，重新计时触发）
+ * @return: {Function}
+ * @param: fn {Function}
+ * @param: wait {Number} 防抖间隔时间毫秒
+ * @param: immediate {Boolean} 是否立即执行
+ */
+/**
+* 防抖函数（一段时间内多次触发，丢弃之前的，重新计时触发）
+* @return: {Function}
+* @param: fn {Function}
+* @param: wait {Number} 防抖间隔时间
+*/
+export function debounce(fn, wait = 3000) {
+  let timer = null
+  return function(...rest) {
+    clearTimeout(timer)
+    const context = this
+    timer = setTimeout(function() {
+      fn.call(context, rest)
+    }, wait)
+  }
+}
+

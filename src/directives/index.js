@@ -1,8 +1,10 @@
 import permission from './permission'
 import draggable from './draggable'
+import preventReClick from './preventReClick'
 const directives = {
   permission,
-  draggable
+  draggable,
+  preventReClick
 }
 
 export default {

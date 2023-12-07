@@ -1,6 +1,6 @@
 <template>
   <section class="app-main">
-    <el-card style="height:100%">
+    <el-card style="height:100%;overflow-y: auto;">
       <router-view :key="key" />
     </el-card>
   </section>
